@@ -2,13 +2,16 @@ from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI
-
 from tasks.routes import router as tasks_router
+
+from core.database import Base, engine
+from tasks.models import TaskModel
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("Starting up...")
+    Base.metadata.create_all(bind=engine)
     yield
     print("Shutting down...")
 

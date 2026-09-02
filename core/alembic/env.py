@@ -6,8 +6,9 @@ from dotenv import load_dotenv
 from sqlalchemy import engine_from_config, pool
 
 from alembic import context
+from core.database import Base
+from tasks.models import *  # This imports TaskModel and registers it with Base.metadata
 
-from core.core.database import Base
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 load_dotenv(BASE_DIR / ".env")
@@ -31,7 +32,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from core.tasks.models import *
+
 
 target_metadata = Base.metadata
 
