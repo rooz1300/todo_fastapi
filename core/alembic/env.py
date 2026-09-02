@@ -3,12 +3,11 @@ from logging.config import fileConfig
 from pathlib import Path
 
 from dotenv import load_dotenv
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
 
 from alembic import context
 
-from core.database import Base
+from core.core.database import Base
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 load_dotenv(BASE_DIR / ".env")
@@ -32,7 +31,8 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from tasks.models import *
+from core.tasks.models import *
+
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,

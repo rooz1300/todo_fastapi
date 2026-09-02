@@ -1,7 +1,8 @@
-from ast import main
+from contextlib import asynccontextmanager
+
 import uvicorn
 from fastapi import FastAPI
-from contextlib import asynccontextmanager
+
 from tasks.routes import router as tasks_router
 
 

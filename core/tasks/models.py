@@ -1,7 +1,9 @@
-from sqlalchemy import Column, String, Text ,Boolean,DateTime, func
-from sqlalchemy.types import Uuid
-from core.database import Base
 from uuid import uuid4
+
+from sqlalchemy import Boolean, Column, DateTime, String, func
+from sqlalchemy.types import Uuid
+
+from core.database import Base
 
 
 
