@@ -7,7 +7,8 @@ from uuid import UUID
 class TaskBaseSchema(BaseModel):
     title: str = Field(..., max_length=150, description="title of the task")
     description: Optional[str] = Field(None, max_length=500, description="description of the task")
-    is_completed: bool = Field(..., description="the current state of the task")
+    is_completed: bool = Field(default=False, description="the current state of the task")
+
 
 
 class TaskCreateSchema(TaskBaseSchema):

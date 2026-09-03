@@ -43,7 +43,7 @@ app = FastAPI(
     ]
 )
 
-app.include_router(tasks_router, prefix="/tasks")
+app.include_router(tasks_router)
 
 
 if __name__ == "__main__":
