@@ -3,9 +3,12 @@ from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
 from tasks.routes import router as tasks_router
+from users.routes import router as users_router
 
 from core.database import Base, engine
 from tasks.models import TaskModel
+from users.models import UserModel
+
 
 
 @asynccontextmanager
@@ -44,7 +47,7 @@ app = FastAPI(
 )
 
 app.include_router(tasks_router)
-
+app.include_router(users_router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

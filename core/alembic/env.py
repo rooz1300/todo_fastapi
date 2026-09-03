@@ -7,8 +7,8 @@ from sqlalchemy import engine_from_config, pool
 
 from alembic import context
 from core.database import Base
-from tasks.models import *  # This imports TaskModel and registers it with Base.metadata
-
+from tasks.models import *  
+from users.models import *
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 load_dotenv(BASE_DIR / ".env")
@@ -60,6 +60,7 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        render_as_batch= True #sqllite modification limations 
     )
 
     with context.begin_transaction():
